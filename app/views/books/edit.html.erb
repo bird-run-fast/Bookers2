@@ -1,0 +1,41 @@
+
+<div class="body-wrap">
+  <div id="st-container" class="st-container">
+    <div class="st-pusher">
+      <div class="st-content">
+        <div class="st-content-inner">
+          <section class="slice slice-lg sct-color-1">
+              <div class="container">
+                  <div class="row">
+                      <div class="col-md-4 col-md-offset-4">
+                          <div class="form-user style-1 rounded has-shadow-1">
+                            <div class="form-header text-center">
+                                <h2 class="form-header-title">Editing Book</h2>
+                            </div>
+                            <div class="form-body">
+                              <%= form_for(@book) do |f| %>
+                                  <div class="form-group has-icon">
+                                      <h4>Title</h4>
+                                      <%= f.text_field :title, autofocus: true, class:"form-control"%>
+                                      <span class="fa fa-user form-control-icon" aria-hidden="true"></span>
+                                  </div>
+                                  <div class="form-group has-icon">
+                                      <h4>Opinion</h4>
+                                      <%= f.text_field :body, autofocus: true, class:"form-control"%>
+                                      <span class="fa fa-user form-control-icon" aria-hidden="true"></span>
+                                  </div>
+                                  <%= f.submit "Update Book", class:"btn btn-lg btn-block btn-base-1 mt-20" %>
+                              <% end %>
+                            </div>
+                            <%= link_to "Show", book_path(@book.id) %>
+                            <%= link_to "Back", books_path %>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </section>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

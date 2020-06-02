@@ -1,0 +1,32 @@
+    <!-- 部分テンプレートの呼び出し(books/_userinfoファイル)-->
+    <%= render "books/userinfo", {book: @book, user: @user} %>
+
+      <!-- Usersの部分 -->
+      <div class="col-xs-9">
+        <h2>Users</h2>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>image</th>
+              <th>name</th>
+              <th></th>
+            </tr>
+            <% @users.each do |user| %>
+              <tr>
+                <td>
+                  <% if user.profile_image %>
+                    <%= image_tag attachment_url(user, :profile_image, :fill, 50, 50, format: "jpg") %>
+                  <% else %>
+                    <%= image_tag "no_user.jpg", :width => "50", :height => "50" %>
+                  <% end %>
+                </td>
+                <td>
+                  <%= user.name %>
+                </td>
+                <td>
+                  <%= link_to "Show", user_path(user.id)%>
+                </td>
+              </tr>
+            <% end%>
+        </table>
+      </div>

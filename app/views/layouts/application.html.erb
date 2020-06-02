@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bookers2</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="row">
+        <header class="head-line col-sm-12">
+          <h2>Bookers</h2>
+          <% if user_signed_in? %>
+            <li>
+              <%= link_to "Home", user_path(current_user.id)%>
+            </li>
+            <li>
+              <%= link_to "Users", users_path %>
+            </li>
+            <li>
+              <%= link_to "Books", books_path%>
+            </li>
+            <li>
+              <%= link_to "logout", destroy_user_session_path, method: :delete %>
+            </li>
+            <li>
+               LogIn状態：あり
+            </li>
+          <% else%>
+            <li>
+              <%= link_to "Home", root_path %>
+            </li>
+            <li>
+              <%= link_to "About", "home/about" %>
+            </li>
+            <li>
+              <%= link_to "Sign up", new_user_registration_path %>
+            </li>
+            <li>
+              <%= link_to "login", new_user_session_path %>
+            </li>
+            <li>
+              LogIn状態:なし
+            </li>
+          <% end %>
+        </header>
+      </div>
+      <% if flash[:notice] %>
+        <div class="row">
+          <p> <%= flash[:notice]%> </p>
+        </div>
+      <% end %>
+      <div class="row main">
+        <%= yield %>
+      </div>
+
+      <div class="row">
+        <footer>
+          copylights infratop
+        </footer>
+      </div>
+
+    </div>
+  </body>
+</html>
